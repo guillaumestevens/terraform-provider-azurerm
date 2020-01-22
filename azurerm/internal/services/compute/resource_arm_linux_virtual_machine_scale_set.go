@@ -88,9 +88,11 @@ func resourceArmLinuxVirtualMachineScaleSet() *schema.Resource {
 				Optional:  true,
 				ForceNew:  true,
 				Sensitive: true,
+				// TODO: does this want:
+				// DiffSuppressFunc: linuxAdminPasswordDiffSuppressFunc,
 			},
 
-			"admin_ssh_key": SSHKeysSchema(),
+			"admin_ssh_key": SSHKeysSchema(false),
 
 			"automatic_os_upgrade_policy": VirtualMachineScaleSetAutomatedOSUpgradePolicySchema(),
 
@@ -108,7 +110,7 @@ func resourceArmLinuxVirtualMachineScaleSet() *schema.Resource {
 				ValidateFunc: ValidateLinuxName,
 			},
 
-			"custom_data": base64.OptionalSchema(),
+			"custom_data": base64.OptionalSchema(false),
 
 			"data_disk": VirtualMachineScaleSetDataDiskSchema(),
 

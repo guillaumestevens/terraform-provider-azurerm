@@ -136,7 +136,7 @@ func resourceArmWindowsVirtualMachineScaleSet() *schema.Resource {
 				ValidateFunc: ValidateWindowsName,
 			},
 
-			"custom_data": base64.OptionalSchema(),
+			"custom_data": base64.OptionalSchema(false),
 
 			"data_disk": VirtualMachineScaleSetDataDiskSchema(),
 
